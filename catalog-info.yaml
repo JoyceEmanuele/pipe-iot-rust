@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: dash-performance-server
+  title: Dash Performance
+  annotations:
+    github.com/project-slug: dielenergia/dash-performance-server
+    github.com/project-repo: dielenergia/dash-performance-server
+    sonarqube.org/project-key: dielenergia_dash-performance-server_AYFpHjESX-Ga31iuycOw
+  tags:
+    - rust
+    - backend
+spec:
+  type: service
+  system: dap
+  lifecycle: production
+  owner: software

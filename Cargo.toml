@@ -1,0 +1,57 @@
+[package]
+name = "dash_performance_server"
+version = "0.1.0"
+authors = ["Carlos Langoni"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "telemetry_service"
+path = "./src/main_telserv.rs"
+
+[[bin]]
+name = "rusthist"
+path = "./src/main_hist.rs"
+
+[[bin]]
+name = "iotrelay"
+path = "./src/main_iotrelay.rs"
+
+[[bin]]
+name = "broker2db"
+path = "./src/main_br2db.rs"
+
+[[bin]]
+name = "getmac"
+path = "./src/main_getmac.rs"
+
+[[bin]]
+name = "realtime"
+path = "./src/main_realtime.rs"
+
+[dependencies]
+chrono = "0.4.38"
+rusoto_core = "0.48.0"
+rusoto_dynamodb = "0.48.0"
+regex = "1.11.1"
+tokio = { version = "1.41.0", features = ["rt", "net"] }
+serde = "1.0.214"
+serde_json = "1.0.132"
+serde_with = "3.11.0"
+serde_dynamo = { version = "4.2.14", features = ["rusoto_dynamodb+0_48"] }
+futures = "0.3.31"
+rumqttc = "0.24.0"
+x509-parser = "0.16.0"
+meval = "0.2.0"
+rustls-pemfile = "2.2.0"
+json5 = "0.4.1"
+reqwest = { version = "0.12.9", features = ["rustls-tls", "json"] }
+redis = { version = "0.27.5", features = ["tokio-comp", "connection-manager"] }
+serde_cbor = "0.11.2"
+tokio-stream = "0.1.16"
+sys-info = "0.9.1"
+gcp-bigquery-client = "0.24.1"
+prost = "0.13.3"
+prost-derive = "0.13.3"
+dotenvy = "0.15.7"

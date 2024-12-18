@@ -1,0 +1,31 @@
+# Stage 1: Compilar o projeto Rust
+FROM rust:1.79.0-slim as builder
+
+WORKDIR /app
+
+
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libssl-dev \
+    libpq-dev \
+    pkg-config \
+    protobuf-compiler \
+    cmake && \
+    apt-get install -y librust-openssl-dev default-libmysqlclient-dev protobuf-compiler && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Copiar o código-fonte restante e compilar
+COPY . .
+RUN RUSTFLAGS=-Awarnings cargo build --release
+
+# Stage 2: Criar a imagem final
+FROM ubuntu:jammy
+
+WORKDIR /app
+RUN ls
+
+# Copiar o binário compilado da stage anterior
+COPY --from=builder /app/target/release/iotrelay .
+
+# Executar o binário
+CMD ["./iotrelay"]

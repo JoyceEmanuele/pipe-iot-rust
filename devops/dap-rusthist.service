@@ -1,0 +1,14 @@
+[Unit]
+Description=Rust history compiler
+
+[Service]
+Type=simple
+User=diel
+LimitNOFILE=15000
+WorkingDirectory=/home/diel/dash-performance-server
+ExecStart=/home/diel/dash-performance-server/rusthist
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

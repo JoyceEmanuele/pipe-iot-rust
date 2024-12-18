@@ -1,0 +1,21 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: iotrelay
+  title: IotRelay
+  annotations:
+    github.com/project-slug: dielenergia/dash-performance-server
+    github.com/project-repo: dielenergia/dash-performance-server
+  tags:
+    - rust
+    - backend
+spec:
+  type: service
+  system: dap
+  lifecycle: production
+  owner: software
+  dependsOn:
+    - resource:brokerMQTT
+  subcomponentOf: dash-performance-server
+  consumesApis:
+    - api-server-api
