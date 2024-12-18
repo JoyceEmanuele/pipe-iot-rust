@@ -31,7 +31,6 @@ jobs:
           IMAGE_TAG: "v${{ github.run_number }}"  # Define a tag única para cada build
           GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
         run: |
-          cp configfile_example.json5 configfile.json5
           docker build -t gcr.io/$GCP_PROJECT_ID/iotrelay-teste:${IMAGE_TAG} -f Dockerfile.iot .
           docker push gcr.io/$GCP_PROJECT_ID/iotrelay-teste:${IMAGE_TAG}
           docker image rm  gcr.io/$GCP_PROJECT_ID/iotrelay-teste:${IMAGE_TAG}
